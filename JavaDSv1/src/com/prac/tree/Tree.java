@@ -24,7 +24,6 @@ public class Tree {
 		return false;
 	}
 	
-	
 	private void insertNode(Node node, int data) {
 		Node temp = node;
 		if(temp.data > data) {
@@ -40,6 +39,46 @@ public class Tree {
 			else
 				insertNode(right, data);
 		}
+	}
+	
+	public void preOderTraversal() {
+		preOrderTraversal(root);
+	}
+	
+	private void preOrderTraversal(Node node) {
+		if(node == null)
+			return;
+		
+		System.out.print(node.data + " ");
+		preOrderTraversal(node.leftNode);
+		preOrderTraversal(node.rightNode);
+	}
+	
+	public void inOrderTraversal() {
+		inOrderTraversal(root);
+	}
+	
+	private void inOrderTraversal(Node node) {
+		if(node == null)
+			return;
+		
+		inOrderTraversal(node.leftNode);
+		System.out.print(node.data + " ");
+		inOrderTraversal(node.rightNode);		
+	}
+	
+	public void postOrderTraversal() {
+		postOrderTraversal(root);
+	}
+	
+	private void postOrderTraversal(Node node) {
+		if(node == null)
+			return;
+		
+		postOrderTraversal(node.leftNode);
+		postOrderTraversal(node.rightNode);
+		System.out.print(node.data + " ");
+				
 	}
 	
 	class Node{
