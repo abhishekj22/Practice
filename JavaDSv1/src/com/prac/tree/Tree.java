@@ -95,6 +95,43 @@ public class Tree {
 		return 1 + Math.max(countHeight(node.leftNode), countHeight(node.rightNode));
 	}
 	
+	public int min() {
+		return min(root, root.data);
+	}
+	
+
+	private int min(Node node, int dummy) {
+		if(node == null)
+			return dummy;
+		
+		if (node.leftNode == null && node.rightNode == null)
+			return node.data;
+		
+		int left = min(node.leftNode, dummy);
+		int right = min(node.rightNode, dummy);
+		
+		return Math.min((Math.min(left, right)), node.data);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		Tree thatTree = (Tree) obj;
+		return equal(this.root, thatTree.root);	
+	}
+	
+	private boolean equal(Node thisNode, Node thatNode) {
+		if(thisNode == null && thatNode == null)
+			return true;
+		
+		if(thisNode != null && thatNode != null)
+			return thisNode.data == thatNode.data
+					&& equal(thisNode.leftNode, thatNode.leftNode)
+					&& equal(thisNode.rightNode, thatNode.rightNode);
+		
+		return false;
+		
+	}
+
 
 	class Node{
 		int data;
