@@ -18,5 +18,7 @@ public class TreeTest {
 		tree.inOrderTraversal();
 		System.out.println();
 		tree.postOrderTraversal();
+		System.out.println();
+		System.out.println(tree.countHeight());
 	}
 }

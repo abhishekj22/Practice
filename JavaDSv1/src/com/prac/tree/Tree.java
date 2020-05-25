@@ -81,6 +81,21 @@ public class Tree {
 				
 	}
 	
+	public int countHeight() {
+		return countHeight(root);
+	}
+	
+	private int countHeight(Node node) {
+		if (node == null)
+			return -1;
+		
+		if (node.leftNode == null && node.rightNode == null)
+			return 0;
+		
+		return 1 + Math.max(countHeight(node.leftNode), countHeight(node.rightNode));
+	}
+	
+
 	class Node{
 		int data;
 		Node leftNode;
