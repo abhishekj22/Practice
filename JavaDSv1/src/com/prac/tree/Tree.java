@@ -128,10 +128,29 @@ public class Tree {
 					&& equal(thisNode.leftNode, thatNode.leftNode)
 					&& equal(thisNode.rightNode, thatNode.rightNode);
 		
-		return false;
-		
+		return false;	
 	}
-
+	
+	public void swapLeftRightChild() {
+		Node temp = root.leftNode;
+		root.leftNode = root.rightNode;
+		root.rightNode = temp;
+	}
+	
+	public boolean isBinarySearchTree() {
+		return isBinarySearchTree(root, -1000, 1000);
+	}
+	
+	private boolean isBinarySearchTree(Node node, int left, int right) {
+		if(node == null)
+			return true;
+		
+		int root = node.data;
+		if(root < left || root > right)
+			return false;
+		
+		return isBinarySearchTree(node.leftNode, left, root) && isBinarySearchTree(node.rightNode, root, right);	
+	}
 
 	class Node{
 		int data;

@@ -32,5 +32,7 @@ public class TreeTest {
 		tree2.insert(8);
 		tree2.insert(26);
 		System.out.println(tree.equals(tree2));
+		tree.swapLeftRightChild();
+		System.out.println(tree.isBinarySearchTree());
 	}
 }
