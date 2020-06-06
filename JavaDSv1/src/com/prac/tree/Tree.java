@@ -1,5 +1,8 @@
 package com.prac.tree;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Tree {
 	Node root;
 	
@@ -150,6 +153,25 @@ public class Tree {
 			return false;
 		
 		return isBinarySearchTree(node.leftNode, left, root) && isBinarySearchTree(node.rightNode, root, right);	
+	}
+	
+	public void getNodeAtKDistance(int distance) {
+		getNodeAtKDistance(root, distance);
+	}
+	
+	private void getNodeAtKDistance(Node node, int distance) {
+		if(node == null)
+			return;
+		
+		if(distance == 0) {
+			System.out.println(node.data);
+			return;
+		}
+		
+		getNodeAtKDistance(node.leftNode, distance-1);
+		//distance++;
+		getNodeAtKDistance(node.rightNode, distance-1);
+		
 	}
 
 	class Node{
