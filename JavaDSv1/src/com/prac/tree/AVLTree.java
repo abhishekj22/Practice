@@ -5,29 +5,24 @@ public class AVLTree {
 	
 	public void insert(int data) {
 		AVLNode newLeaf = new AVLNode(data);
-		if(root == null) {
-			root = newLeaf;
-			return;
-		}
-		insert(root, newLeaf);
+		root = insert(root, newLeaf);
 	}
 	
-	private void insert(AVLNode node, AVLNode newLeaf) {
+	private AVLNode insert(AVLNode node, AVLNode newLeaf) {
+		if(node == null) {
+			node = newLeaf;
+			return newLeaf;
+		}
+		
 		if(newLeaf.data < node.data) {
-			if(node.leftSubtree == null)
-				node.leftSubtree = newLeaf;
-			else
-				insert(node.leftSubtree, newLeaf);
+			node.leftSubtree =insert(node.leftSubtree, newLeaf);
 		} else {
-			if (node.rightSubtree == null)
-				node.rightSubtree = newLeaf;
-			else
-				insert(node.rightSubtree, newLeaf);
+			node.rightSubtree = insert(node.rightSubtree, newLeaf);
 		}
 		
 		setHeight(node);
 		
-		node = balance(node);
+		return balance(node);
 	}
 	
 	private AVLNode balance(AVLNode node) {
